@@ -40,6 +40,8 @@
 // bitmaps made by https://javl.github.io/image2cpp/
 #include "osmi.h"
 #include "gala.h"
+#include "osmi_xmas.h"
+#include "qr.h"
 
 // Delay between API calls in miliseconds
 //#define DELAY_MS 5 * 60 * 1000 // Every 1 minute, minute has 60 seconds and second has 1000 miliseconds
@@ -241,7 +243,7 @@ void handleString()
   timezone = server.arg(3);
   //TODO: allow dynamic updates to API endpoint - too long right now
   //apiURL = "https://api.coingecko.com/api/v3/simple/price?ids=osmi,gala&vs_currencies=usd";
-  apiURL = server.arg(4);
+  //apiURL = server.arg(4);
   updateHTML();
 
   if (refresh.toInt() <= 0)
@@ -276,7 +278,7 @@ void handleString()
     address += REFRESH_SIZE+1;
     EEPROM.writeString(address,timezone);
     address += TIMEZONE_SIZE+1;
-    EEPROM.writeString(address,apiURL);
+    // EEPROM.writeString(address,apiURL);
     EEPROM.commit();
     delay(500);
 
@@ -364,8 +366,12 @@ void clearEEPROM()
 
 void showInstructions()
 {
-  display.clearDisplay();    // Clear everything from epaper frame buffer
+  display.drawBitmap(0,0,osmi_xmas_bits,osmi_xmas_width,osmi_xmas_height,INKPLATE2_BLACK);
+  display.drawBitmap(106,0,qr_bits,qr_width,qr_height,INKPLATE2_BLACK);
+  display.display();
+  delay(15000);
 
+  display.clearDisplay();    // Clear everything from epaper frame buffer
   display.setCursor(0, 5); // Print out instruction on how to connect to Inkplate WiFi and how to open a web page
   display.setTextColor(INKPLATE2_RED);
   display.print("Connect to SSID: ");

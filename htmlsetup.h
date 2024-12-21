@@ -6,15 +6,15 @@ String s =  "<!DOCTYPE html>\n"
 
             "textarea {\n"
             "width: 300px;\n"
-            "height: 5em;\n"
+            "height: 2em;\n"
             "}\n"
 
             "textarea {\n"
-            "  font-size: 150%;\n"
+            "  font-size: 100%;\n"
             "}\n"
 
             "t1 {\n"
-            "  font-size: 150%;\n"
+            "  font-size: 100%;\n"
             "  font-weight: bold;\n"
             "}\n"
 
@@ -33,7 +33,6 @@ String s =  "<!DOCTYPE html>\n"
             "SSID Password (16 chars max)<br><textarea maxlength = '16' name = 'input2'></textarea><br>\n"
             "Refresh (in minutes - 3 integers max)<br><textarea maxlength = '3' name = 'input3'></textarea><br>\n"
             "Time Zone (hours ahead/behind UTC (e.g CST is -6 - 3 integers max)<br><textarea maxlength = '3' name = 'input4'></textarea><br>\n"  
-            "API URL - leave blank if unsure (77 chars max)<br><textarea maxlength = '77' name = 'input5'></textarea><br>"
             "</form>\n"
 
             "<input type='button' value='Submit' onClick='SubmitAll()'>\n"
